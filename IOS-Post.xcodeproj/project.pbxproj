@@ -13,6 +13,7 @@
 		1BF51F5F23428B3400E455C6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BF51F5D23428B3400E455C6 /* LaunchScreen.storyboard */; };
 		1BF51F6723428E2A00E455C6 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF51F6623428E2A00E455C6 /* Post.swift */; };
 		1BF51F6923428FA500E455C6 /* PostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF51F6823428FA500E455C6 /* PostController.swift */; };
+		1BF51F7023429A1C00E455C6 /* PostListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF51F6F23429A1C00E455C6 /* PostListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		1BF51F6023428B3400E455C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1BF51F6623428E2A00E455C6 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		1BF51F6823428FA500E455C6 /* PostController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostController.swift; sourceTree = "<group>"; };
+		1BF51F6F23429A1C00E455C6 /* PostListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,8 +58,8 @@
 		1BF51F5323428B3400E455C6 /* IOS-Post */ = {
 			isa = PBXGroup;
 			children = (
-				1BF51F6E2342995500E455C6 /* View Controllers */,
 				1BF51F6B2342993A00E455C6 /* Views */,
+				1BF51F6E2342995500E455C6 /* View Controllers */,
 				1BF51F6C2342994300E455C6 /* Model */,
 				1BF51F6D2342994900E455C6 /* Model Controller */,
 				1BF51F6A2342991200E455C6 /* Resources */,
@@ -103,6 +105,7 @@
 		1BF51F6E2342995500E455C6 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				1BF51F6F23429A1C00E455C6 /* PostListViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -178,6 +181,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1BF51F7023429A1C00E455C6 /* PostListViewController.swift in Sources */,
 				1BF51F5523428B3400E455C6 /* AppDelegate.swift in Sources */,
 				1BF51F6723428E2A00E455C6 /* Post.swift in Sources */,
 				1BF51F6923428FA500E455C6 /* PostController.swift in Sources */,

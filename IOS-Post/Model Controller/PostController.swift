@@ -10,10 +10,10 @@ import Foundation
 
 class PostController {
     
-    static private let baseURL = URL(string: "http://devmtn-posts.firebaseio.com/posts")!
-    static var posts = [Post]()
+     private let baseURL = URL(string: "http://devmtn-posts.firebaseio.com/posts")!
+     var posts = [Post]()
     
-    static func fetchPosts(completion: @escaping () -> Void){
+     func fetchPosts(completion: @escaping () -> Void){
         let getterEndPoint = baseURL.appendingPathExtension("json")
         print(getterEndPoint)
         
