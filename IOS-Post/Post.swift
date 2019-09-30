@@ -18,3 +18,7 @@ struct Post: Codable {
         self.username = username
     }
 }
+
+//struct Toplevel: Codable {
+//    let posts: [
+//}
