@@ -16,6 +16,7 @@ class PostController {
     static func fetchPosts(completion: @escaping () -> Void){
         let getterEndPoint = baseURL.appendingPathExtension("json")
         print(getterEndPoint)
+        
         URLSession.shared.dataTask(with: getterEndPoint) { (data, _, error) in
             if let error = error {
                 print("Error in the data task: \(error), // \(error.localizedDescription), // \(#function)")
@@ -27,6 +28,7 @@ class PostController {
                 return }
             
             let jD = JSONDecoder()
+            
             do {
                 let postsDictionary = try  jD.decode([String : Post].self, from: data) 
                 let postArraysFromDictionary = postsDictionary.compactMap { $0.value }

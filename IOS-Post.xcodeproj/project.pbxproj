@@ -56,15 +56,23 @@
 		1BF51F5323428B3400E455C6 /* IOS-Post */ = {
 			isa = PBXGroup;
 			children = (
-				1BF51F5423428B3400E455C6 /* AppDelegate.swift */,
 				1BF51F5823428B3400E455C6 /* Main.storyboard */,
 				1BF51F6623428E2A00E455C6 /* Post.swift */,
 				1BF51F6823428FA500E455C6 /* PostController.swift */,
+				1BF51F6A2342991200E455C6 /* Resources */,
+			);
+			path = "IOS-Post";
+			sourceTree = "<group>";
+		};
+		1BF51F6A2342991200E455C6 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1BF51F5423428B3400E455C6 /* AppDelegate.swift */,
 				1BF51F5B23428B3400E455C6 /* Assets.xcassets */,
 				1BF51F5D23428B3400E455C6 /* LaunchScreen.storyboard */,
 				1BF51F6023428B3400E455C6 /* Info.plist */,
 			);
-			path = "IOS-Post";
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -288,7 +296,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X4W7EQ4E4R;
-				INFOPLIST_FILE = "IOS-Post/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/IOS-Post/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -306,7 +314,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X4W7EQ4E4R;
-				INFOPLIST_FILE = "IOS-Post/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/IOS-Post/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
