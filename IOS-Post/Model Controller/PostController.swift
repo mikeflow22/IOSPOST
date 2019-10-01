@@ -16,14 +16,14 @@ class PostController {
     func fetchPosts(reset: Bool = true, completion: @escaping () -> Void){
 
         /*
-         You  want  to order the posts in reverse chronological order. Determine the neccessary timestamp for your query based on whether you are resetting the list (where you want to use  the current time) or appending the list (where you would want to use the time of the earlier fetched post).
+         You want to order the posts in reverse chronological order. Determine the neccessary timestamp for your query based on whether you are resetting the list (where you want to use  the current time) or appending the list (where you would want to use the time of the earlier fetched post).
          1. Request the posts ordered by timestamp to put them in chronological order { orderBy }
          2. Specify that you want the list to end at the timestamp of the least recent Post you have already fetched (or at the current date if you haven't posted any)
          3. Specify that you want the posts at the end of that ordered list (endAt).
          4. Specify that you want the last 15 posts (limitToLast).
          
          */
-        let  queryEndInterval = reset ? Date().timeIntervalSince1970 : posts.last?.timestamp ?? Date().timeIntervalSince1970
+        let  queryEndInterval = reset ? Date().timeIntervalSince1970 : posts.last?.queryTimestamp ?? Date().timeIntervalSince1970
         
         //build a [String: String] Dictionary literal of the URL Parameters you want to use.
         let urlParameters = ["orderBy": "\"timestamp\"", "endAt": "\(queryEndInterval)", "limitToLast": "15"]

@@ -113,6 +113,17 @@ extension PostListViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        //check if the  indexPath.row of the cell parameter is greater than  or equal to the number of posts currently loaded -1 on the postController. If so, call the fetchPosts function  with reset set to false. in the completion handler reload  the tableview
+        guard indexPath.row >= postController.posts.count - 1 else {
+            return
+        }
+        postController.fetchPosts(reset: false) {
+            print("FETCHING POSTS AT THE END OF THE TABLE VIEW")
+                        DispatchQueue.main.async {
+                            self.reloadTableView()
+                        }
+        }
+    }
     
 }
