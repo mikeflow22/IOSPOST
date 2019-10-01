@@ -9,11 +9,11 @@
 import UIKit
 
 class PostListViewController: UIViewController {
-
+    
     var refreshControl = UIRefreshControl()
     
     private lazy var formmatter: DateFormatter = {
-       let formatter = DateFormatter()
+        let formatter = DateFormatter()
         formatter.dateStyle = .short
         return formatter
     }()
@@ -29,6 +29,7 @@ class PostListViewController: UIViewController {
         myTableView.rowHeight = UITableView.automaticDimension
         myTableView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(refreshControlPulled), for: .valueChanged)
+        
         postController.fetchPosts {
             print("Called fetch posts in the view did load")
             DispatchQueue.main.async {
@@ -46,13 +47,56 @@ class PostListViewController: UIViewController {
             }
         }
     }
+    @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
+        presentNewPostAlert()
+    }
     
     func reloadTableView(){
-//            UIApplication.shared.isNetworkActivityIndicatorVisible = true
-            self.myTableView.reloadData()
-//            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+        //            UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        self.myTableView.reloadData()
+        //            UIApplication.shared.isNetworkActivityIndicatorVisible = false
     }
-
+    
+    func presentNewPostAlert(){
+        let alert =  UIAlertController(title: "New Post", message: "Enter info for new post", preferredStyle: .alert)
+        alert.addTextField { (usernameTextField) in
+            usernameTextField.placeholder = "Please enter username"
+        }
+        alert.addTextField { (messageTextField) in
+            messageTextField.placeholder = "Enter post message"
+        }
+        let addAction = UIAlertAction(title: "Add Post", style: .default) { (_) in
+            guard let username = alert.textFields?.first?.text, !username.isEmpty, let message = alert.textFields?.last?.text, !message.isEmpty else {
+                print("Error unwrapping textfields in the alertController")
+                self.presentErrorAlert()
+                return }
+            
+            self.postController.addNewPostWith(username: username, text: message, completion: {
+                
+                DispatchQueue.main.async {
+                    self.reloadTableView()
+                }
+                
+            })
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(addAction)
+        alert.addAction(cancelAction)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func presentErrorAlert(){
+        let alert = UIAlertController(title: "Error", message: "Missing information. Please try again", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default) { (_) in
+            self.presentNewPostAlert()
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(okAction)
+        alert.addAction(cancelAction)
+        present(alert, animated: true, completion: nil)
+        
+    }
+    
 }
 
 extension PostListViewController: UITableViewDelegate, UITableViewDataSource {

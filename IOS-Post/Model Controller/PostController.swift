@@ -42,4 +42,48 @@ class PostController {
         }.resume()
     }
     
+    func addNewPostWith(username: String, text: String, completion: @escaping ()-> Void){
+        let postToPost = Post(text: text, username: username)
+        var postData: Data? //potential error here
+        do {
+            let jE = JSONEncoder()
+            postData = try jE.encode(postToPost)
+        } catch  {
+            print("Error Encoding post to post: \(error) \(#function)")
+        }
+       let postEndpoint = baseURL.appendingPathExtension("json")
+        var  urlRequest = URLRequest(url: postEndpoint)
+        urlRequest.httpMethod = "POST"
+        urlRequest.httpBody = postData
+        
+        
+        URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
+            if let responseStatus = response as? HTTPURLResponse {
+                print("This is the response status: \(responseStatus.statusCode)")
+            }
+            if let error = error {
+                print("Error in the data task: \(error), // \(error.localizedDescription), // \(#function)")
+                completion()
+                return
+            }
+            
+            guard let data = data else {
+                print("Error unwrapping data: \(#function)")
+                return
+            }
+            let dataAsString = String(data: data, encoding: .utf8)
+            if let testDataString = dataAsString {
+                print("Success!!!! Data = \(testDataString)")
+            } else {
+                print("WE FAILED")
+            }
+            
+            self.fetchPosts(completion: {
+                completion()
+            })
+            
+        }.resume()
+        
+    }
+    
 }
